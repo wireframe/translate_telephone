@@ -1,0 +1,12 @@
+{
+  "name": "translate-telephone",
+  "version": "1.0.0",
+  "description": "A translation telephone game that translates phrases through multiple languages",
+  "main": "translate-telephone.js",
+  "scripts": {
+    "start": "node translate-telephone.js"
+  },
+  "dependencies": {
+    "@vitalets/google-translate-api": "^9.2.0"
+  }
+} 
