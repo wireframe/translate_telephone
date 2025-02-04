@@ -13,10 +13,15 @@ Remember playing telephone with your friends?  Start with a phrase, pass it alon
 
 1. Clone this repository
 2. Install dependencies:
-   ```
-   npm install
-   ```
+
+```bash
+$ npm install
+```
 
 ## Usage
 
 Run the application:
+
+```bash
+$ npm start
+```
