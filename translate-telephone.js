@@ -1,4 +1,4 @@
-const translate = require('@vitalets/google-translate-api');
+const { translate } = require('@vitalets/google-translate-api');
 
 async function translateTelephone(text, startLanguage = 'en') {
     let currentText = text;
@@ -11,25 +11,19 @@ async function translateTelephone(text, startLanguage = 'en') {
     
     // Translate through each language
     for (const lang of languages) {
-        try {
-            // Translate to next language
-            const translation = await translate(currentText, { 
-                from: currentLang, 
-                to: lang 
-            });
-            
-            currentText = translation.text;
-            currentLang = lang;
-            
-            console.log(`Translated to ${lang}: ${currentText}`);
-            
-            // Small delay to avoid rate limiting
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            
-        } catch (error) {
-            console.error(`Error translating to ${lang}:`, error.message);
-            continue;
-        }
+        // Translate to next language
+        const translation = await translate(currentText, { 
+            from: currentLang, 
+            to: lang 
+        });
+        
+        currentText = translation.text;
+        currentLang = lang;
+        
+        console.log(`Translated to ${lang}: ${currentText}`);
+        
+        // Small delay to avoid rate limiting
+        await new Promise(resolve => setTimeout(resolve, 1000));
     }
     
     // Translate back to original language
