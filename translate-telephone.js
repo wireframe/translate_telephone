@@ -1,5 +1,14 @@
 const { translate } = require('@vitalets/google-translate-api');
 
+// Shuffle the languages array
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
 async function translateTelephone(text, startLanguage = 'en') {
     let currentText = text;
     let currentLang = startLanguage;
@@ -7,15 +16,6 @@ async function translateTelephone(text, startLanguage = 'en') {
     // Languages to cycle through
     const languages = ['fr', 'de', 'es', 'ja', 'ru', 'ko', 'it'];
     
-    // Shuffle the languages array
-    const shuffleArray = (array) => {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-    };
-
     const shuffledLanguages = shuffleArray([...languages]); // Create a shuffled copy of the languages array
     
     console.log(`\nOriginal text (${startLanguage}): ${text}`);
